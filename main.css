@@ -54,3 +54,13 @@ footer {
     color: #FFFFFF;
     text-align: center;
 }
+
+ol {
+    list-style: none;
+    counter-reset: li;
+}
+
+li:before {
+    counter-increment: li;
+    content: counters(li, ".") ". ";
+}
