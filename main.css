@@ -10,6 +10,10 @@ body {
     padding: 0;
 }
 
+main {
+    padding: 0 100px;
+}
+
 img {
     max-width: 300px;
 }
@@ -36,16 +40,34 @@ a {
 }
 
 header {
-    padding: 1%;
+    padding: 1% 0;
     background-color: #3e383e;
     color: #FFFFFF;
     text-align: center;
 }
 
 nav {
+    background-color: #3e383e;
+    color: #FFFFFF;
     display: flex;
-    padding: 1%;
+    padding: 0 0 1% 0;
     justify-content: space-around;
+    position: sticky;
+    top: 0px;
+
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(0, 0, 0);
+}
+
+table .name {
+    background-color: #d7d9f2;
+}
+
+table .other {
+    background-color: #e9eaff;
 }
 
 footer {
@@ -63,4 +85,8 @@ ol {
 li:before {
     counter-increment: li;
     content: counters(li, ".") ". ";
+}
+
+.logo {
+    width: 60px;
 }
