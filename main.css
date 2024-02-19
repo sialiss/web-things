@@ -31,7 +31,6 @@ a {
 .wrapper {
     display: grid;
     justify-items: center;
-    gap: 20px;
 }
 
 .flex {
@@ -46,15 +45,29 @@ header {
     text-align: center;
 }
 
+q, .content-center {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+
 nav {
     background-color: #3e383e;
     color: #FFFFFF;
     display: flex;
-    padding: 0 0 1% 0;
+    padding: 1% 0;
     justify-content: space-around;
     position: sticky;
     top: 0px;
+}
 
+hr {
+    width: 100%;
+    border-top: 3px double #3e383e;
+    height: 2px;
+    color: #3e383e;
+    background-color: #3e383e;
 }
 
 table {
@@ -89,4 +102,9 @@ li:before {
 
 .logo {
     width: 60px;
+}
+
+abbr {
+    font-style: italic;
+    color: chocolate;
 }
