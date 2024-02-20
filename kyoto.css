@@ -1,0 +1,31 @@
+.header {
+    padding: 1% 0;
+    background-color: #3e383e;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.navigation {
+    background-color: #3e383e;
+    color: #FFFFFF;
+    display: flex;
+    padding: 1% 0;
+    justify-content: space-around;
+    position: sticky;
+    top: 0px;
+}
+
+.main {
+    padding: 0 100px;
+}
+
+.footer {
+    padding: 1%;
+    background-color: #3e383e;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.logo {
+    width: 60px;
+}
