@@ -24,6 +24,19 @@ img {
 a {
     color: #FFFFFF;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    width: 100%;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: ghostwhite;
 }
 
 li a {
@@ -87,22 +100,6 @@ nav {
     color: #FFFFFF;
 }
 
-a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    width: 100%;
-}
-
-a:link {
-    color: white;
-}
-
-a:visited {
-    color: ghostwhite;
-}
-
 hr {
     width: 99%;
     border-top: 3px double #3e383e;
@@ -146,7 +143,7 @@ li:before {
     content: counters(li, ".") ". ";
 }
 
-.logo {
+#logo {
     width: 60px;
 }
 
