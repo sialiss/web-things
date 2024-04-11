@@ -8,21 +8,70 @@
     <meta name="description" content="Animation studios">
     <meta name="keywordswords" content="Japan, animation, anime">
     <title>Студии анимации</title>
-    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="main.css">
+    <script>
+        window.addEventListener("load", () => {
+                const images = document.getElementsByName("artist")
+                images.forEach(img => {
+                    img.addEventListener('mousemove', function (event) {
+                        const scaleFactor = 1.3;
+                        const boundingRect = this.getBoundingClientRect();
 
-    <style>
-        .logo {
-            vertical-align: baseline;
-        }
-    </style>
+                        const offsetX = event.clientX - boundingRect.left;
+                        const offsetY = event.clientY - boundingRect.top;
+
+                        const scaleTransform = `scale(${scaleFactor})`;
+                        const translateTransform = `translate(${-(scaleFactor - 1) * offsetX}px, ${-(scaleFactor - 1) * offsetY}px)`;
+
+                        this.style.transform = `${scaleTransform} ${translateTransform}`;
+                    });
+
+                    img.addEventListener('mouseleave', function () {
+                        this.style.transform = 'scale(1)';
+                    });
+                });
+
+                // автор
+                const logo = document.getElementsByName("logo");
+                logo.forEach(btn => {
+                    btn.addEventListener("click", function () {
+                        alert("Середа Светлана Андреевна 4131");
+                    });
+                });
+
+                // часы
+                function updateTime() {
+                    const now = new Date();
+                    const hours = now.getHours().toString().padStart(2, '0');
+                    const minutes = now.getMinutes().toString().padStart(2, '0');
+                    const seconds = now.getSeconds().toString().padStart(2, '0');
+                    return `${hours}:${minutes}:${seconds}`;
+                }
+
+                document.getElementsByName('showTime').forEach((btn, i) => {
+                    btn.addEventListener('click', function () {
+                        document.getElementsByName('clock').forEach(clock => clock.textContent = updateTime().split(':')[i]);
+                    })
+                    btn.style.background = "#d7d9f2"
+                    btn.style.width = "150px"
+                });
+
+
+
+                // строка
+                const table = document.getElementsByName("table")[0]
+                const tr = document.createElement("tr")
+                tr.innerHTML = '<td>Новая строка</td>'
+                table.lastElementChild.appendChild(tr)
+            })
+    </script>
 </head>
 
 <body>
     <header>
         <div>
             <strong>Студии анимации</strong>
-            <img class="logo" id="logo" src="images/title.png" alt="logo" style="vertical-align:middle">
+            <img class="logo" id="logo" name="logo" src="images/title.png" alt="logo">
             Главная
         </div>
     </header>
@@ -30,10 +79,11 @@
         <div class="menucell"><a class="highlighted" href="index.html">Главная</a></div>
         <div class="menucell"><a href="kyoto animation.html">Kyoto Animation</a></div>
         <div class="menucell"><a href="sources.html">Источники</a></div>
-        <!-- <a href="">Javascript</a>
-                <a href="">Анкета</a>
-                <a href="">Таблицы из базы данных</a>
-                <a href="">xml</a> -->
+        <!--
+            <a href="">Анкета</a>
+            <a href="">Таблицы из базы данных</a>
+            <a href="">xml</a> 
+        -->
     </nav>
 
     <main class="wrapper">
@@ -51,8 +101,8 @@
                 Простые фигуры передают сложный смысл.
             </q>
             <div class="content-center">
-                <img src="images/work.jpg">
-                <img src="images/591855.jpg">
+                <img src="images/work.jpg" name="artist">
+                <img src="images/591855.jpg" name="artist">
             </div>
             <blockquote>
                 <p>
@@ -123,7 +173,7 @@
                 </ol>
             </div>
         <hr>
-        <table border=1>
+        <table border=1 name="table">
             <caption>Топ 5 самых кассовых мультфильмов</caption>
             <colgroup>
                 <col class="name"/>
@@ -164,6 +214,12 @@
             </tbody>
         </table>
     <hr>
+    <button name="showTime">Показать часы</button>
+    <button name="showTime">Показать минуты</button>
+    <button name="showTime">Показать секунды</button>
+    
+    <div name="clock"></div>
+    <hr>
     </main>
     <footer>
         <address>
@@ -171,7 +227,6 @@
             <a href="tel:+12345556789">+1 (234) 555‑6789</a>
         </address>
     </footer>
-    <script src="./script.js"></script>
 </body>
 
 </html>

@@ -19,7 +19,6 @@ main {
 
 img {
     max-width: 300px;
-    transition: transform 0.3s ease-in-out;
 }
 
 a {
@@ -38,6 +37,16 @@ a:link {
 
 a:visited {
     color: ghostwhite;
+}
+
+.source {
+    display: inline;
+    color:black;
+}
+
+.source:visited {
+    color: black;
+    display: inline;
 }
 
 li a {
