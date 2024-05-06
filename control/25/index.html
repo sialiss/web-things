@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пример использования nextElementSibling</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Пример использования nextElementSibling</h1>
+    <div class="box"></div>
+    <button id="changeColorBtn">Изменить цвет следующего элемента после изображения</button>
+
+    <script>
+        document.getElementById('changeColorBtn').addEventListener('click', function () {
+            var currentBox = document.querySelector('.box');
+            var nextSibling = currentBox.nextElementSibling;
+
+            if (nextSibling) {
+                var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                nextSibling.style.backgroundColor = randomColor;
+            } else {
+                alert('Следующего элемента нет');
+            }
+        });
+    </script>
+</body>
+
+</html>
