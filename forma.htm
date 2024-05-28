@@ -1,0 +1,50 @@
+<HTML>
+<TITLE>==Python==</TITLE>
+
+<BODY>
+    <H1>Анкета пользователя</H1>
+    <HR>
+    <FORM method="POST" action="/cgi-bin/tutor5.py">
+        <H3>Заполните форму и нажмите кнопку</H3>
+        <P>
+        <TABLE>
+            <TR>
+                <TH align=right>Имя:
+                <TD> <input type=text name=name>
+            <TR>
+                <TH align=right>Размер обуви:
+                <TD>
+                    <table>
+                        <td><input type=radio name=shoesize value=маленький>Маленький
+                        <td><input type=radio name=shoesize value=средний>Средний
+                        <td><input type=radio name=shoesize value=большой>Большой
+                    </table>
+            <TR>
+                <TH align=right>Должность:
+                <TD><select name=job>
+                        <option>студент
+                        <option>преподаватель
+                        <option>библиотекарь
+                        <option>другое
+                    </select>
+            <TR>
+                <TH align=right>Любимый язык:
+                <TD>
+                    <table>
+                        <td><input type=checkbox name=language value=Python>Python
+                        <td><input type=checkbox name=language value=C>C
+                        <td><input type=checkbox name=language value=php>php
+                    </table>
+            <TR>
+                <TH align=right>Комментарий:
+                <TD><textarea name=comment cols=30 rows=2>
+                введите текст</textarea>
+            <TR>
+                <TD colspan=2 align=center>
+                    <input type=submit value="ОТПРАВИТЬ">
+        </TABLE>
+    </FORM>
+    <HR>
+</BODY>
+
+</HTML>
