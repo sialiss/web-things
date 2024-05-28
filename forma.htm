@@ -1,50 +1,156 @@
-<HTML>
-<TITLE>==Python==</TITLE>
+<!DOCTYPE html>
+<html>
 
-<BODY>
-    <H1>Анкета пользователя</H1>
-    <HR>
-    <FORM method="POST" action="/cgi-bin/tutor5.py">
-        <H3>Заполните форму и нажмите кнопку</H3>
-        <P>
-        <TABLE>
-            <TR>
-                <TH align=right>Имя:
-                <TD> <input type=text name=name>
-            <TR>
-                <TH align=right>Размер обуви:
-                <TD>
-                    <table>
-                        <td><input type=radio name=shoesize value=маленький>Маленький
-                        <td><input type=radio name=shoesize value=средний>Средний
-                        <td><input type=radio name=shoesize value=большой>Большой
-                    </table>
-            <TR>
-                <TH align=right>Должность:
-                <TD><select name=job>
-                        <option>студент
-                        <option>преподаватель
-                        <option>библиотекарь
-                        <option>другое
+<head>
+    <title>Опрос о любимых аниме и студиях анимации</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            text-align: right;
+            width: 50%;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const name = document.forms["animeForm"]["name"].value;
+            const surname = document.forms["animeForm"]["surname"].value;
+            const patronymic = document.forms["animeForm"]["patronymic"].value;
+            const favorite_anime = document.forms["animeForm"]["favorite_anime"].value;
+
+            if (name === "" || surname === "" || patronymic === "" || favorite_anime === "") {
+                alert("Все поля должны быть заполнены");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <form name="animeForm" method="GET" action="/cgi-bin/quest.py" enctype="multipart/form-data"
+        onsubmit="return validateForm()">
+        <h3>Заполните форму и нажмите кнопку</h3>
+        <p>
+        <table>
+            <tr>
+                <th>Имя:</th>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <th>Фамилия:</th>
+                <td><input type="text" name="surname"></td>
+            </tr>
+            <tr>
+                <th>Отчество:</th>
+                <td><input type="text" name="patronymic"></td>
+            </tr>
+            <tr>
+                <th>Пол:</th>
+                <td>
+                    <input type="radio" name="gender" value="Мужской">Мужской
+                    <input type="radio" name="gender" value="Женский">Женский
+                    <input type="radio" name="gender" value="Другой">Другой
+                </td>
+            </tr>
+            <tr>
+                <th>Любимое аниме:</th>
+                <td><input type="text" name="favorite_anime"></td>
+            </tr>
+            <tr>
+                <th>Любимая студия анимации:</th>
+                <td>
+                    <select name="favorite_studio">
+                        <option>Studio Ghibli</option>
+                        <option>MAPPA</option>
+                        <option>Kyoto Animation</option>
+                        <option>Ufotable</option>
+                        <option>Production I.G</option>
+                        <option>Другое</option>
                     </select>
-            <TR>
-                <TH align=right>Любимый язык:
-                <TD>
+                </td>
+            </tr>
+            <tr>
+                <th>Любимые жанры аниме:</th>
+                <td>
                     <table>
-                        <td><input type=checkbox name=language value=Python>Python
-                        <td><input type=checkbox name=language value=C>C
-                        <td><input type=checkbox name=language value=php>php
+                        <tr>
+                            <td><input type="checkbox" name="genres" value="Action">Action</td>
+                            <td><input type="checkbox" name="genres" value="Romance">Romance</td>
+                            <td><input type="checkbox" name="genres" value="Comedy">Comedy</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="genres" value="Fantasy">Fantasy</td>
+                            <td><input type="checkbox" name="genres" value="Drama">Drama</td>
+                            <td><input type="checkbox" name="genres" value="Sci-Fi">Sci-Fi</td>
+                        </tr>
                     </table>
-            <TR>
-                <TH align=right>Комментарий:
-                <TD><textarea name=comment cols=30 rows=2>
-                введите текст</textarea>
-            <TR>
-                <TD colspan=2 align=center>
-                    <input type=submit value="ОТПРАВИТЬ">
-        </TABLE>
-    </FORM>
-    <HR>
-</BODY>
+                </td>
+            </tr>
+            <tr>
+                <th>Загрузите изображение вашего любимого персонажа:</th>
+                <td><input type="file" name="character_image" accept="image/*"></td>
+            </tr>
+            <tr>
+                <th>Комментарий:</th>
+                <td><textarea name="comment" cols="30" rows="2">введите текст</textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="ОТПРАВИТЬ"></td>
+            </tr>
+        </table>
+    </form>
+</body>
 
-</HTML>
+</html>
