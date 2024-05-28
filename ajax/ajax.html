@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Редактирование анимации</title>
+    <script>
+        // Функция для отправки AJAX-запроса на сервер
+        function saveAnimation() {
+            // Получаем данные из формы
+            var id = document.getElementById('animation_id').value;
+            var title = document.getElementById('title').value;
+            var releaseYear = document.getElementById('release_year').value;
+            var genre = document.getElementById('genre').value;
+            var studioId = document.getElementById('studio_id').value;
+
+            // Создаем объект XMLHttpRequest для отправки запроса
+            var xhr = new XMLHttpRequest();
+
+            // Настраиваем запрос (тип, URL, асинхронный)
+            xhr.open('POST', 'save_animation.php', true);
+
+            // Устанавливаем заголовок Content-Type для корректной обработки данных на сервере
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            // Создаем объект данных для отправки
+            var data = JSON.stringify({
+                id: id,
+                title: title,
+                releaseYear: releaseYear,
+                genre: genre,
+                studioId: studioId
+            });
+
+            // Отправляем запрос с данными
+            xhr.send(data);
+
+            // Обработка ответа от сервера
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    if (xhr.status == 200) {
+                        // Обновляем страницу без перезагрузки
+                        window.location.reload();
+                    } else {
+                        console.error('Произошла ошибка при сохранении данных');
+                    }
+                }
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Редактирование анимации</h2>
+    <form>
+        <input type="hidden" id="animation_id" value="1">
+        <label for="title">Название:</label>
+        <input type="text" id="title" name="title" value="Название анимации"><br>
+        <label for="release_year">Год выпуска:</label>
+        <input type="text" id="release_year" name="release_year" value="2022"><br>
+        <label for="genre">Жанр:</label>
+        <input type="text" id="genre" name="genre" value="Фэнтези"><br>
+        <label for="studio_id">Студия:</label>
+        <select id="studio_id" name="studio_id">
+            <option value="1">Студия 1</option>
+            <option value="2">Студия 2</option>
+            <option value="3">Студия 3</option>
+        </select><br>
+        <button type="button" onclick="saveAnimation()">Сохранить</button>
+
+    </form>
+</body>
+
+</html>
